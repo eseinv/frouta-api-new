@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class PartnersController extends Controller
 {
-    public function showAllProducts()
+    public function showAllPartners()
     {
         $partners = Partner::all();
         return response($partners, 200);
     }
 
-    public function showProduct($id)
+    public function showPartners($id)
     {
         $partner = Partner::find($id);
         return response($partner, 200);
@@ -30,7 +30,7 @@ class PartnersController extends Controller
             $partner->save();
             return response()->json(['success' => 'Partner was created'], 201);
         }
-        return response()->json(['error'=> 'Not authorized']);
+        return response()->json(['error' => 'Not authorized']);
     }
 
     public function updatePartner(Request $request, $id)
@@ -48,7 +48,7 @@ class PartnersController extends Controller
         $type = $request->auth->type;
         if ($type == 'admin') {
             Partner::findOrFail($id)->delete();
-            return response('Deleted successfully', 200);
+            return response(['success' => 'Deleted successfully'], 200);
         }
     }
 }
