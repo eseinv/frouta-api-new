@@ -18,7 +18,7 @@ class Partner extends Model implements AuthenticatableContract, AuthorizableCont
      * @var array
      */
     protected $fillable = [
-        'name', 'info', 'image'
+        'name', 'type', 'address', 'image'
     ];
 
     /**
