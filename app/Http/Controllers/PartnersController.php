@@ -13,7 +13,7 @@ class PartnersController extends Controller
         return response($partners, 200);
     }
 
-    public function showPartners($id)
+    public function showPartner($id)
     {
         $partner = Partner::find($id);
         return response($partner, 200);
@@ -25,7 +25,8 @@ class PartnersController extends Controller
         if ($type == 'admin') {
             $partner = new Partner;
             $partner->name = $request['name'];
-            $partner->info = $request['info'];
+            $partner->type = $request['type'];
+			$partner->address = $request['address'];
             $partner->image = $request['image'];
             $partner->save();
             return response()->json(['success' => 'Partner was created'], 201);
