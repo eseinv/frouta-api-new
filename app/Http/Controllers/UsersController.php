@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class UsersController extends Controller
 {
@@ -36,11 +37,11 @@ class UsersController extends Controller
         $user->email = $request['email'];
         $user->password = app('hash')->make($request['password'], $options = []);
         $user->type = 'customer';
-        $user->country = $request['country'];
-        $user->street = $request['street'];
-        $user->postal = $request['postal'];
-        $user->phone = $request['phone'];
-        $user->save();
+        $user->country = $request['country'] ? $request['country'] : ' ';
+        $user->street = $request['street'] ? $request['street'] : ' ';
+        $user->postal = $request['postal'] ? $request['postal'] : ' ';
+	$user->phone = $request['phone'] ? $request['phone'] : ' ';
+	$user->save();
         return response()->json(['Success' => 'Created user successfully'], 201);
     }
 
