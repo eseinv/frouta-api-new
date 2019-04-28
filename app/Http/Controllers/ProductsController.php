@@ -49,7 +49,7 @@ class ProductsController extends Controller
         $type = $request->auth->type;
         if ($type == 'admin') {
             Product::findOrFail($id)->delete();
-            return response('Deleted successfully', 200);
+            return response(['success'=>'Deleted successfully'], 200);
         }
     }
 }
