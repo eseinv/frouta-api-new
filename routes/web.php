@@ -39,7 +39,8 @@ $router->group(['middleware' => 'jwt.auth'],
         $router->patch('/cart/user/{id}', 'CartsController@confirmCart');
         $router->delete('/cart/{id}', 'CartsController@deleteCart');
 		$router->get('/partner', 'PartnersController@showAllPartners');
-		$router->post('/partners/create', 'PartnersController@showPartners');
+		$router->get('/partner/{id}', 'PartnersController@showPartner');
+		$router->post('/partner/create', 'PartnersController@createPartner');
 		$router->patch('/partner/{id}', 'PartnersController@updatePartner');
         $router->delete('/partner/{id}', 'PartnersController@deletePartner');
     });
