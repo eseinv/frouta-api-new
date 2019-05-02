@@ -20,6 +20,8 @@ $router->post('/login', 'AuthController@authenticate');
 $router->post('/register', 'UsersController@createUser');
 $router->get('/product', 'ProductsController@showAllProducts');
 $router->get('/product/{id}', 'ProductsController@showProduct');
+$router->get('/partner/{id}', 'PartnersController@showPartner');
+$router->get('/partner', 'PartnersController@showAllPartners');
 
 
 $router->group(['middleware' => 'jwt.auth'],
@@ -38,8 +40,6 @@ $router->group(['middleware' => 'jwt.auth'],
         $router->patch('/cart/{id}', 'CartsController@updateCart');
         $router->patch('/cart/user/{id}', 'CartsController@confirmCart');
         $router->delete('/cart/{id}', 'CartsController@deleteCart');
-		$router->get('/partner', 'PartnersController@showAllPartners');
-		$router->get('/partner/{id}', 'PartnersController@showPartner');
 		$router->post('/partner/create', 'PartnersController@createPartner');
 		$router->patch('/partner/{id}', 'PartnersController@updatePartner');
         $router->delete('/partner/{id}', 'PartnersController@deletePartner');
