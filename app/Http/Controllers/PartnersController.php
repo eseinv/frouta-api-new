@@ -31,7 +31,7 @@ class PartnersController extends Controller
             $partner->save();
             return response()->json(['success' => 'Partner was created'], 201);
         }
-        return response()->json(['error' => 'Not authorized']);
+        return response()->json(['error'=> 'Not authorized']);
     }
 
     public function updatePartner(Request $request, $id)
