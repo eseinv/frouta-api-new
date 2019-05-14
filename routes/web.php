@@ -13,7 +13,7 @@
 use Illuminate\Http\Response;
 
 $router->get('/', function () use ($router) {
-    return response('hi', 200);
+    return response('', 200);
 });
 
 $router->post('/login', 'AuthController@authenticate');
@@ -22,6 +22,8 @@ $router->get('/product', 'ProductsController@showAllProducts');
 $router->get('/product/{id}', 'ProductsController@showProduct');
 $router->get('/partner/{id}', 'PartnersController@showPartner');
 $router->get('/partner', 'PartnersController@showAllPartners');
+$router->get('/image/', 'ImagesController@showAllImages');
+$router->get('/image/{id}', 'ImagesController@showImage');
 
 
 $router->group(['middleware' => 'jwt.auth'],
@@ -43,4 +45,7 @@ $router->group(['middleware' => 'jwt.auth'],
 		$router->post('/partner/create', 'PartnersController@createPartner');
 		$router->patch('/partner/{id}', 'PartnersController@updatePartner');
         $router->delete('/partner/{id}', 'PartnersController@deletePartner');
+        $router->post('/image', 'ImagesController@createImage');
+        $router->patch('/image/{id}', 'ImagesController@updateImage');
+        $router->delete('/image/{id}', 'ImagesController@deleteImage');
     });
