@@ -10,6 +10,7 @@ class ProductsController extends Controller
     public function showAllProducts()
     {
         $products = Product::all();
+        $products->images = $products->load('images');
         return response($products, 200);
     }
 
