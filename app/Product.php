@@ -29,4 +29,9 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
     protected $hidden = [
 
     ];
+
+    public function images()
+    {
+        return $this->hasMany('App\Image', 'productId', 'id');
+    }
 }
