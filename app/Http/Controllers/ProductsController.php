@@ -17,6 +17,7 @@ class ProductsController extends Controller
     public function showProduct($id)
     {
         $product = Product::find($id);
+        $product->images = $product->load('images');
         return response($product, 200);
     }
 
